@@ -2,19 +2,13 @@
 
 ---
 
-## Repository
-
-[github.com/zneexp](https://github.com/zneexp)
-
----
-
 ## Description
 
 This project is a functional test automation framework built with **Java**, using **Selenium WebDriver**, **JUnit 5**, **Cucumber**, and **Gradle**.
 
 It validates login and shopping cart features from [saucedemo.com](https://www.saucedemo.com), and also consumes and verifies a public API from Mercado Libre.
 
-## Tech Stack
+## 🧰 Tech Stack
 
 - Java 17+
 - Selenium WebDriver
@@ -23,7 +17,7 @@ It validates login and shopping cart features from [saucedemo.com](https://www.s
 - Gradle
 - Chrome and Firefox drivers
 
-## How to Run
+## 🚀 How to Run
 
 ### From Terminal
 
@@ -36,24 +30,24 @@ It validates login and shopping cart features from [saucedemo.com](https://www.s
 Run the class:
 
 ```
-src/test/java/runner/RunCucumberTest.java
+runner/RunCucumberTest.java
 ```
 
-## Browser Switch
+## 🌐 Browser Switch
 
 Default browser is **Chrome**, but you can change it to **Firefox** in:
 
 ```
-src/test/java/steps/Hooks.java
+hooks/Hooks.java
 ```
 
 Change the value:
 
 ```java
-DriverType driverType = CHROME; --> change it to FIREFOX
+DriverType driverType = CHROME; --> change it to "FIREFOX"
 ```
 
-## Reports and Screenshots
+## 📊 Reports and Screenshots
 
 - Test reports (.html) are generated under:
 
@@ -61,4 +55,5 @@ DriverType driverType = CHROME; --> change it to FIREFOX
 target/
 ```
 
-- Screenshots on failure are attached directly to the Cucumber HTML report.
+- Screenshots on failure are added in the same report.
+

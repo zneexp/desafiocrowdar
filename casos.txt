@@ -1,0 +1,128 @@
+TEST'S
+
+Feature: Login user
+    #TC-001
+Scenario outline: Login with correct credentials
+Given a user, goes to the login page
+And wants to login in the platform
+When the user enters “<username>” and “<password>”
+Then the user should see the home page with the products
+
+Examples:
+|username			|password	|
+| standard_user		| secret_sauce	|
+| locked_out_user		| secret_sauce	|
+| problem_user			| secret_sauce	|
+| performance_glitch_user	| secret_sauce	|
+| error_user			| secret_sauce	|
+| visual_user			| secret_sauce	|
+
+
+
+    #TC-002
+Scenario outline: Login with incorrect combination of credentials
+Given a user, goes to the login page 
+And wants to login in the platform
+When the user enters “<username>” and “<password>”
+Then the user should see an alert message that said “<errorMessage>”
+
+Examples:
+|username		|password	| errorMessage 							|
+| any_user		| secret_sauce	| Username and password do not match any user in this service	|
+| standard_user	| secret_juice	| Username and password do not match any user in this service	|
+| any_user		| secret_juice	| Username and password do not match any user in this service	|
+
+
+
+
+    #TC-003
+Scenario outline: Login with placeholders empty
+Given a user, goes to the login page
+And wants to login in the platform
+When the user enters “<username>” and “<password>”
+Then the user should see an alert message that said “<errorMessage>”
+
+Examples:
+|username		|password	| errorMessage 	|
+| empty		| empty	| Username is required	|
+| standard_user	| empty	| Password is required	|
+| empty		| secret_sauce	| Username is required	|
+
+    
+
+Feature: Shopping cart
+
+Background:
+Given a user is already logged in
+And goes to the home page
+
+#TC-004
+Scenario Outline: a user add items in the shopping cart from the home page
+When the user clicks in the ‘Add to Cart’ button of <numberOfItems> item/s
+Then the same button/s change the text to ‘Remove’ and the color to red 
+And in the cart logo should be appears the number <numberOfItems>
+
+Examples:
+| numberOfItems	|
+| 1			|
+| 2			|
+| 3			| 
+| 4			| 
+| 5			| 
+| 6			|
+
+
+#TC-005
+Scenario: a user add one item in the shopping cart from the item description page
+Given the user select 1 item
+And is redirect to the item description page
+When the user clicks in the ‘Add to Cart’ of the item
+Then the same buttons change the text to ‘Remove’ and the color to red 
+And in the cart logo should be appears the number ‘1’
+
+#TC-006
+Scenario: a user checks the cart with items selected
+Given the user selected 2 items
+And in the cart logo appears the number 2
+When the user clicks in the Cart logo
+Then is redirect to the cart page
+And the user can see the selected items with the button to remove it from the cart
+
+
+#TC-007
+Scenario: a user remove items in the shopping cart from the home page
+Given the user selected 3 items
+And in the cart logo appears the number 3
+When the user clicks in the ‘Remove’ button of a selected item
+Then the same buttons change the text to ‘Add to cart’ and the color to black 
+And in the cart logo should be appears the number 2
+
+#TC-008
+Scenario: a user log out session with selected items in the cart
+Given the user selected 3 items
+And in the cart logo appears the number 3
+When the user logout their session
+And re-enter their correct credentials in the login page
+Then the same items already selected should be still appears as selected with the option to remove it
+And in the cart should be appear the number 3
+
+
+#TC-009
+Scenario: a user with selected items in the cart wants to checkout
+Given the user selected 3 items
+And in the cart logo appears the number 3
+When the user clicks in the Cart logo
+And is redirect to the cart page
+And the click in the ‘checkout’ button
+Then is redirect to the checkout page
+And the user can finish their shopping process
+
+
+
+
+
+
+
+
+
+

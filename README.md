@@ -1,10 +1,7 @@
-# Challenge
-
----
-
 ## Repository
 
-[github.com/zneexp](https://github.com/zneexp)
+[github.com/zneexp/desafiocrowdar
+](https://github.com/zneexp)
 
 ---
 
@@ -17,11 +14,11 @@ It validates login and shopping cart features from [saucedemo.com](https://www.s
 ## Tech Stack
 
 - Java 17+
+- Cucumber
+- Gradle
 - Selenium WebDriver
 - JUnit 5
-- Cucumber 7
-- Gradle
-- Chrome and Firefox drivers
+- Chrome/Firefox 
 
 ## How to Run
 
